@@ -16,21 +16,17 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    // Créer un utilisateur
     public User createUser(User user) {
-        // Vérifier que l'email n'existe pas déjà
         if (userRepository.existsByEmail(user.getEmail())) {
-            throw new RuntimeException("Un utilisateur avec cet email existe déjà.");
+            throw new IllegalArgumentException("Un utilisateur avec cet email existe déjà : " + user.getEmail());
         }
         return userRepository.save(user);
     }
 
-    // Consulter tous les utilisateurs
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    // Consulter un utilisateur par ID
     public User getUserById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé avec l'id: " + id));
