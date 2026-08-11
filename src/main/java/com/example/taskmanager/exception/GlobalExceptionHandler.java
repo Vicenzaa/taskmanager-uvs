@@ -33,9 +33,8 @@ public class GlobalExceptionHandler {
         error.put("error", "Bad Request");
 
         Map<String, String> fieldErrors = new HashMap<>();
-        ex.getBindingResult().getFieldErrors().forEach(fieldError ->
-                fieldErrors.put(fieldError.getField(), fieldError.getDefaultMessage())
-        );
+        ex.getBindingResult().getFieldErrors()
+                .forEach(fieldError -> fieldErrors.put(fieldError.getField(), fieldError.getDefaultMessage()));
 
         error.put("message", "Erreur de validation");
         error.put("details", fieldErrors);
