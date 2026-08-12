@@ -53,13 +53,14 @@ public class GlobalExceptionHandler {
     }
 
     // Gestion des erreurs génériques => 500
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<Map<String, Object>> handleGenericException(Exception ex) {
-        Map<String, Object> error = new HashMap<>();
-        error.put("timestamp", LocalDateTime.now());
-        error.put("status", 500);
-        error.put("error", "Internal Server Error");
-        error.put("message", "Une erreur interne est survenue");
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
-    }
+    // @ExceptionHandler(Exception.class)
+    // public ResponseEntity<Map<String, Object>> handleGenericException(Exception
+    // ex) {
+    // Map<String, Object> error = new HashMap<>();
+    // error.put("timestamp", LocalDateTime.now());
+    // error.put("status", 500);
+    // error.put("error", "Internal Server Error");
+    // error.put("message", "Une erreur interne est survenue");
+    // return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+    // }
 }
